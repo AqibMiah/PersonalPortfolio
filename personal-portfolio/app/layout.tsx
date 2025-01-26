@@ -1,16 +1,13 @@
 import type { Metadata } from "next"
-import { Outfit } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Aqib Miah - Portfolio",
-  description: "Computer Science student and developer passionate about creating impactful solutions",
+  description: "Software Engineer and Computer Science Student",
 }
 
 export default function RootLayout({
@@ -20,12 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.variable} font-sans antialiased bg-black text-white`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
